@@ -1,5 +1,7 @@
 library(targets)
-source("code.R")
+source("1_fetch/src/fetch_data.R")
+source("2_process/src/process_data.R")
+source("3_visualize/src/visualize_data.R")
 tar_option_set(packages = c("tidyverse", "sbtools", "whisker"))
 
 list(
