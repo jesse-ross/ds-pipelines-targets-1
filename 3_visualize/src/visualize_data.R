@@ -9,8 +9,8 @@ library(whisker)
 
 # Create a plot
 plot_rmse_data = function() {
-  eval_data = read_csv("../2_process/out/model_summary_results.csv")
-  png(file = 'out/figure_1.png', width = 8, height = 10, res = 200, units = 'in')
+  eval_data = read_csv("2_process/out/model_summary_results.csv")
+  png(file = '3_visualize/out/figure_1.png', width = 8, height = 10, res = 200, units = 'in')
   par(omi = c(0,0,0.05,0.05), mai = c(1,1,0,0), las = 1, mgp = c(2,.5,0), cex = 1.5)
 
   plot(NA, NA, xlim = c(2, 1000), ylim = c(4.7, 0.75),

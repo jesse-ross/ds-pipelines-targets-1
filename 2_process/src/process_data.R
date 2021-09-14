@@ -9,7 +9,7 @@ library(whisker)
 
 # Process the data
 process_data <- function() {
-  mendota_file = "../1_fetch/out/model_RMSes.csv"
+  mendota_file = "1_fetch/out/model_RMSes.csv"
   eval_data <- readr::read_csv(mendota_file, col_types = 'iccd') %>%
     filter(str_detect(exper_id, 'similar_[0-9]+')) %>%
     mutate(col = case_when(
@@ -22,7 +22,7 @@ process_data <- function() {
       model_type == 'pgdl' ~ 23
     ), n_prof = as.numeric(str_extract(exper_id, '[0-9]+')))
   # Save the processed data
-  readr::write_csv(eval_data, file = 'out/model_summary_results.csv')
+  readr::write_csv(eval_data, file = '2_process/out/model_summary_results.csv')
 
   
   # Save the model diagnostics
@@ -44,5 +44,5 @@ process_data <- function() {
   whisker.render(template_1 %>%
     str_remove_all('\n') %>%
     str_replace_all('  ', ' '), render_data ) %>%
-    cat(file = 'out/model_diagnostic_text.txt')
+    cat(file = '2_process/out/model_diagnostic_text.txt')
 }
