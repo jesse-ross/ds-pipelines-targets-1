@@ -5,12 +5,16 @@ library(stringr)
 library(sbtools)
 library(whisker)
 
-
+# Read in the data downloaded in the prior step
+read_eval_data = function() {
+  mendota_file = "1_fetch/out/model_RMSes.csv"
+  eval_data <- readr::read_csv(mendota_file, col_types = 'iccd')
+  return(eval_data)
+}
 
 # Process the data
 process_data <- function() {
-  mendota_file = "1_fetch/out/model_RMSes.csv"
-  eval_data <- readr::read_csv(mendota_file, col_types = 'iccd') %>%
+  eval_data <- read_eval_data() %>%
     filter(str_detect(exper_id, 'similar_[0-9]+')) %>%
     mutate(col = case_when(
       model_type == 'pb' ~ '#1b9e77',
@@ -23,9 +27,12 @@ process_data <- function() {
     ), n_prof = as.numeric(str_extract(exper_id, '[0-9]+')))
   # Save the processed data
   readr::write_csv(eval_data, file = '2_process/out/model_summary_results.csv')
+}
 
   
-  # Save the model diagnostics
+# Save the model diagnostics
+create_diagnostic_text = function() {
+  eval_data <- read_eval_data()
   render_data <- list(pgdl_980mean = filter(eval_data, model_type == 'pgdl', exper_id == "similar_980") %>% pull(rmse) %>% mean %>% round(2),
                       dl_980mean = filter(eval_data, model_type == 'dl', exper_id == "similar_980") %>% pull(rmse) %>% mean %>% round(2),
                       pb_980mean = filter(eval_data, model_type == 'pb', exper_id == "similar_980") %>% pull(rmse) %>% mean %>% round(2),
