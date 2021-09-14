@@ -1,3 +1,7 @@
+1_fetch/out/model_RMSEs.csv
+2_process/out/model_diagnostic_text.txt
+2_process/out/model_summary_results.csv
+3_visualize/out/figure_1.png
 .Rproj.user
 .Rhistory
 .RData
