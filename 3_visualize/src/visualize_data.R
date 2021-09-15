@@ -1,5 +1,3 @@
-library(dplyr)
-
 # Create a plot
 plot_rmse_data = function(data_file = "2_process/out/model_summary_results.csv") {
   eval_data = readr::read_csv(data_file, show_col_types = FALSE)
