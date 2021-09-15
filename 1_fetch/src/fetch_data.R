@@ -1,3 +1,5 @@
+library(sbtools)
+
 # Get the data from ScienceBase
 fetch_data <- function() {
   mendota_file <- '1_fetch/out/model_RMSEs.csv'

@@ -1,6 +1,8 @@
+library(dplyr)
+
 # Create a plot
 plot_rmse_data = function(data_file = "2_process/out/model_summary_results.csv") {
-  eval_data = read_csv(data_file, show_col_types = FALSE)
+  eval_data = readr::read_csv(data_file, show_col_types = FALSE)
   output_file = "3_visualize/out/figure_1.png"
   png(file = output_file, width = 8, height = 10, res = 200, units = 'in')
   par(omi = c(0,0,0.05,0.05), mai = c(1,1,0,0), las = 1, mgp = c(2,.5,0), cex = 1.5)

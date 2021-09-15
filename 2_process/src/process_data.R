@@ -1,3 +1,7 @@
+library(whisker)
+library(stringr)
+library(dplyr)
+
 # Read in the data downloaded in the prior step
 read_eval_data = function(mendota_file = "1_fetch/out/model_RMSes.csv") {
   eval_data <- readr::read_csv(mendota_file, col_types = 'iccd')
