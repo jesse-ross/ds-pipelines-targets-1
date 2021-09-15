@@ -7,7 +7,9 @@ list(
   # Get the data from ScienceBase
   tar_target(
     model_RMSEs_csv,
-    fetch_data(),
+    fetch_sb_file(sb_id = "5d925066e4b0c4f70d0d0599",
+                  name = "me_RMSE.csv",
+                  output_file = "1_fetch/out/model_RMSEs.csv"),
     format = "file"
   ), 
   # Prepare the data for plotting
