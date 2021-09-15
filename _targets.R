@@ -30,8 +30,8 @@ list(
   # Save the model diagnostics
   tar_target(
     model_diagnostic_text_txt,
-    create_diagnostic_text(mendota_file = eval_data), 
-    packages = c("dplyr", "whisker"),
+    create_diagnostic_text(mendota_file = model_RMSEs_csv), 
+    packages = c("dplyr", "whisker", "stringr"),
     format = "file",
   )
 )
