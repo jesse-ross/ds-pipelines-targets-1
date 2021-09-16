@@ -14,8 +14,13 @@ process_data <- function(mendota_file,
     ), n_prof = as.numeric(str_extract(exper_id, "[0-9]+")))
   # Save the processed data
   #output_file <- "2_process/out/model_summary_results.csv"
+  return(eval_data)
+}
+
+# Save the processed data as a CSV
+save_summary_results = function(eval_data, output_file) {
   readr::write_csv(eval_data, file = output_file)
-  return(output_file)
+  output_file
 }
 
 

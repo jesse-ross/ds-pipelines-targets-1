@@ -1,6 +1,5 @@
 # Create a plot
-plot_rmse_data = function(data_file, output_file) {
-  eval_data = readr::read_csv(data_file, show_col_types = FALSE)
+plot_rmse_data = function(eval_data, output_file) {
   png(file = output_file, width = 8, height = 10, res = 200, units = 'in')
   par(omi = c(0,0,0.05,0.05), mai = c(1,1,0,0), las = 1, mgp = c(2,.5,0), cex = 1.5)
 
